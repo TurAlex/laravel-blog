@@ -4,17 +4,18 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTagToPostTable extends Migration {
+class CreatePostTagsTable extends Migration {
 	/**
 	 * Run the migrations.
 	 *
 	 * @return void
 	 */
 	public function up() {
-		Schema::create( 'tag_to_post', function ( Blueprint $table ) {
+		Schema::create( 'post_tags', function ( Blueprint $table ) {
 			$table->increments( 'id' );
 			$table->integer( 'tag_id' );
 			$table->integer( 'post_id' );
+			$table->timestamps();
 		} );
 	}
 	

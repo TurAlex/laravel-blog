@@ -2,24 +2,18 @@
 
 namespace App;
 
-use Illuminate\Cache\TagSet;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 
-class Post extends Model {
-
+class Category extends Model
+{
 	use Sluggable;
 	
-	public function category(){
-		return $this->hasOne(Category::class);
-	}
 	
-	public function author(){
-		return $this->hasOne(User::class);
-	}
-	public function tags(){
-		return $this->belongsToMany( Tag::class,'post_tags','post_id','tag_id');
-	}
+	public function posts(){
+    	return $this->hasMany(Post::class);
+    }
+	
 	/**
 	 * Return the sluggable configuration array for this model.
 	 *
