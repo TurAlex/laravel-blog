@@ -15,10 +15,12 @@ class CreatePostsTable extends Migration {
 			$table->increments( 'id' );
 			$table->string( 'title' );
 			$table->string('slug');
-			$table->text('content');
 			$table->text('intro');
-			$table->boolean('status');
-			$table->integer('category_id');
+			$table->text('content');
+			$table->string('image');
+			$table->integer('category_id')->nullable();
+			$table->integer('user_id')->nullable();
+			$table->boolean('status')->default(0);
 			$table->text('tags_list');
 			$table->timestamps();
 		} );

@@ -15,4 +15,10 @@ Route::get('/posts/{post}','PostsController@show');
 Route::post('/posts', 'PostsController@store');
 
 
+// ADMIN
+Route::get('admin','Admin\DashboardController');
+
+
+
+
 
