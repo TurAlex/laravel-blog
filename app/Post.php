@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Cache\TagSet;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Model;
@@ -11,17 +12,21 @@ class Post extends Model {
 
 	use Sluggable;
 	
-	protected $fillable = ['title', 'content', 'intro' ];
+	protected $fillable = ['title', 'content', 'intro'];
 	
 	public function category(){
-		return $this->hasOne(Category::class);
+		return $this->belongsTo(Category::class);
 	}
 	
 	public function author(){
-		return $this->hasOne(User::class);
+		return $this->belongsTo(User::class,'user_id');
 	}
 	public function tags(){
 		return $this->belongsToMany( Tag::class,'post_tags','post_id','tag_id');
+	}
+	
+	public function comments() {
+		return $this->hasMany(Comment::class);
 	}
 	/**
 	 * Return the sluggable configuration array for this model.
@@ -51,25 +56,32 @@ class Post extends Model {
 	}
 	
 	public function remove() {
-		Storage::delete('uploads/'.$this->image);
+		$this->removeImage();
 		$this->delete();
 	}
 	
 	public function uploadImage($image){
 		if($image == null){return;}
-		Storage::delete('uploads/'.$this->image);
+		$this->removeImage();
 		$imagename = str_random(10) . '.' . $image->extension();
-		$image->saveAs('uploads', $imagename);
+		$image->storeAs('uploads', $imagename);
 		$this->image = $imagename;
 		$this->save();
 	}
+	
+	public function removeImage() {
+		if ($this->image != null)
+			Storage::delete('uploads/'.$this->image);
+	}
 	public function setCategory($id){
-		if($id == null) {return;}
+		if($id == null)
+			return;
 		$this->category_id = $id;
 		$this->save();
 	}
 	public function setTags($ids){
-		if($ids == null) {return;}
+		if($ids == null)
+			return;
 		$this->tags()->sync($ids);
 	}
 	
@@ -95,5 +107,57 @@ class Post extends Model {
 		return '/uploads/' . $this->image;
 	}
 	
+	public function getCategoryTitle() {
+		if ($this->category != null)
+			return $this->category->title;
+		return 'Нет категории';
+	}
+	public function getCategoryDescription() {
+		if ($this->category != null)
+			return $this->category->description;
+		return 'Нет категории';
+	}
 	
+	public function getTagsTitles() {
+		if($this->tags == null)
+			return 'Нет тегов';
+		return implode(', ',$this->tags->pluck('title')->all());
+	}
+	
+	public function getCategoryID() {
+		return $this->category != null ? $this->category->id : null;
+	}
+	
+	public function getDate() {
+		return $this->created_at->format('F d, Y');
+	}
+	
+	public function getComments(  ) {
+		return $this->comments()->where('status', 1)->get();
+	}
+	public function hasPrevious() {
+		return	self::where('id','<', $this->id)->max('id');
+	}
+	public function getPrevious() {
+		$postID = $this->hasPrevious();
+		return self::find($postID);
+	}
+	public function hasNext() {
+		return self::where('id','>', $this->id)->min('id');
+	}
+	public function getNext() {
+		$postID = $this->hasNext();
+		return self::find($postID);
+	}
+	
+	public function related(  ) {
+		return self::all()->except($this->id);
+	}
+	
+	public function hasCategory() {
+		return $this->category != null ? true : false;
+	}
+	public function hasTags() {
+		return $this->tags != null ? true : false;
+	}
 }

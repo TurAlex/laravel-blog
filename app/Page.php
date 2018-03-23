@@ -3,12 +3,22 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\Sluggable;
+
 
 
 class Page extends Model {
+	use Sluggable;
 	
-	public function author() {
-		return $this->hasOne(User::class);
-  }
-
+	protected $fillable = ['title', 'content'];
+	
+	
+	public function sluggable()
+	{
+		return [
+			'slug' => [
+				'source' => 'title'
+			]
+		];
+	}
 }

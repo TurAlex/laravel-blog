@@ -9,8 +9,7 @@ class CreatePostTagsTable extends Migration {
 	 * Run the migrations.
 	 *
 	 * @return void
-	 */
-	public function up() {
+	 */	public function up() {
 		Schema::create( 'post_tags', function ( Blueprint $table ) {
 			$table->increments( 'id' );
 			$table->integer( 'tag_id' );
@@ -25,6 +24,6 @@ class CreatePostTagsTable extends Migration {
 	 * @return void
 	 */
 	public function down() {
-		Schema::dropIfExists( 'tag_to_post' );
+		Schema::dropIfExists( 'post_tags' );
 	}
 }

@@ -13,10 +13,10 @@ class CreateCategoriesTable extends Migration {
 	public function up() {
 		Schema::create( 'categories', function ( Blueprint $table ) {
 			$table->increments( 'id' );
-			$table->string( 'title' );
+			$table->string( 'title');
 			$table->string('slug');
-			$table->text('content');
-			$table->boolean('active');
+			$table->text('description')->nullable();
+			$table->boolean('status')->default(0);
 			$table->timestamps();
 		} );
 	}

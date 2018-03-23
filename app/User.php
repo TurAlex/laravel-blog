@@ -1,9 +1,10 @@
 <?php
 
 namespace App;
-
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+
 
 class User extends Authenticatable
 {
@@ -14,9 +15,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
+    protected $fillable = ['name', 'email'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -24,7 +23,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token'
     ];
 	
 	public function posts() {
@@ -37,34 +36,37 @@ class User extends Authenticatable
 	public static function add( $fields ) {
 		$user = new static;
 		$user->fill($fields);
-		$user->password = bcrypt($fields['password']);
 		$user->save();
-		
 		return $user;
 	}
 	
 	public function edit( $fields ) {
 		$this->fill($fields);
-		$this->password = bcrypt($fields[password]);
 		$this->save();
 	}
 	
 	public function remove() {
+		$this->removeAvatar();
 		$this->delete();
+	}
+	
+	public function removeAvatar() {
+		if ($this->avatar != null)
+			Storage::delete('uploads/'.$this->avatar);
 	}
 	
 	public function uploadAvatar($image){
 		if($image == null){return;}
-		Storage::delete('uploads/'.$this->image);
+		$this->removeAvatar();
 		$imagename = str_random(10) . '.' . $image->extension();
-		$image->saveAs('uploads', $imagename);
-		$this->image = $imagename;
+		$image->storeAs('uploads', $imagename);
+		$this->avatar = $imagename;
 		$this->save();
 	}
 	public function getAvatar() {
-		if ($this->image == null)
-			return '/img/no-user-image.png';
-		return '/uploads/' . $this->image;
+		if ($this->avatar == null)
+			return '/img/no-avatar.png';
+		return '/uploads/' . $this->avatar;
 	}
 	
 	public function makeAdmin() {
@@ -81,5 +83,12 @@ class User extends Authenticatable
 		if ($is_admin == 0)
 			return $this->makeAdmin();
 		return $this->makeNormal();
-}
+	}
+	
+	public function generatePassword($password) {
+		if ($password != null){
+			$this->password = bcrypt($password);
+			$this->save();
+		}
+	}
 }

@@ -17,7 +17,9 @@ class CreateTagsTable extends Migration
             $table->increments('id');
 						$table->string('title');
 						$table->string('slug');
-						$table->boolean('active');
+						$table->boolean('active')->default(0);
+	          $table->timestamps();
+	
         });
     }
 
