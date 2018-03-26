@@ -4,7 +4,7 @@
     <div class="featured">
 
       <div class="featured__column featured__column--big">
-        <div class="entry" style="background-image:url('/public/images/thumbs/featured/featured-guitarman.jpg');">
+        <div class="entry" style="background-image:url('/images/thumbs/featured/featured-guitarman.jpg');">
 
           <div class="entry__content">
             <span class="entry__category"><a href="/assets/#0">Music</a></span>
@@ -13,7 +13,7 @@
 
             <div class="entry__info">
               <a href="/assets/#0" class="entry__profile-pic">
-                <img class="avatar" src="/public/assets/images/avatars/user-03.jpg" alt="">
+                <img class="avatar" src="/assets/images/avatars/user-03.jpg" alt="">
               </a>
 
               <ul class="entry__meta">
@@ -37,7 +37,7 @@
 
             <div class="entry__info">
               <a href="/assets/#0" class="entry__profile-pic">
-                <img class="avatar" src="/public/assets/images/avatars/user-03.jpg" alt="">
+                <img class="avatar" src="/assets/images/avatars/user-03.jpg" alt="">
               </a>
 
               <ul class="entry__meta">
@@ -58,7 +58,7 @@
 
             <div class="entry__info">
               <a href="/assets/#0" class="entry__profile-pic">
-                <img class="avatar" src="/public/assets/images/avatars/user-03.jpg" alt="">
+                <img class="avatar" src="/assets/images/avatars/user-03.jpg" alt="">
               </a>
 
               <ul class="entry__meta">

@@ -15,19 +15,19 @@
 
   <!-- CSS
   ================================================== -->
-  <link rel="stylesheet" href="/public/assets/css/base.css">
-  <link rel="stylesheet" href="/public/assets/css/vendor.css">
-  <link rel="stylesheet" href="/public/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/css/vendor.css">
+  <link rel="stylesheet" href="/assets/css/main.css">
 
   <!-- script
   ================================================== -->
-  <script src="/public/assets/js/modernizr.js"></script>
-  <script src="/public/assets/js/pace.min.js"></script>
+  <script src="/assets/js/modernizr.js"></script>
+  <script src="/assets/js/pace.min.js"></script>
 
   <!-- favicons
   ================================================== -->
-  <link rel="shortcut icon" href="/public/assets/favicon.ico" type="image/x-icon">
-  <link rel="icon" href="/public/assets/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
 
 </head>
 

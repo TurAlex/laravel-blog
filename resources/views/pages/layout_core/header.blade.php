@@ -7,7 +7,7 @@
 
       <div class="header__logo">
         <a class="logo" href="/">
-          <img src="/public/assets/images/logo.svg" alt="Homepage">
+          <img src="/assets/images/logo.svg" alt="Homepage">
         </a>
       </div> <!-- end header__logo -->
 
@@ -30,11 +30,11 @@
 
       <div class="header__login" >
         @if(Auth::check())
-          <a href="/public/profile#profile-form"><span style="padding-right: 20px">Профиль</span></a>
-          <a href="/public/logout"><span>Выйти</span></a>
+          <a href="/profile#profile-form"><span style="padding-right: 20px">Профиль</span></a>
+          <a href="/logout"><span>Выйти</span></a>
         @else
-          <a href="/public/login#login-form"><span style="padding-right: 20px">Login</span></a>
-          <a href="/public/register#register-form"><span>Register</span></a>
+          <a href="/login#login-form"><span style="padding-right: 20px">Login</span></a>
+          <a href="/register#register-form"><span>Register</span></a>
         @endif
       </div>
 

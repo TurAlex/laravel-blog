@@ -33,9 +33,9 @@
 
 <!-- Java Script
 ================================================== -->
-<script src="/public/assets/js/jquery-3.2.1.min.js"></script>
-<script src="/public/assets/js/plugins.js"></script>
-<script src="/public/assets/js/main.js"></script>
+<script src="/assets/js/jquery-3.2.1.min.js"></script>
+<script src="/assets/js/plugins.js"></script>
+<script src="/assets/js/main.js"></script>
 
 </body>
 
