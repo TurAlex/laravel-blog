@@ -4,11 +4,11 @@
       <div class="col-full">
         <div class="s-footer__copyright">
           <span>© Copyright Philosophy 2018</span>
-          <span>Site Template by <a href="/assets/https://colorlib.com/">Colorlib</a></span>
+          <span>Site Template by <a href="#">Colorlib</a></span>
         </div>
 
         <div class="go-top">
-          <a class="smoothscroll" title="Back to Top" href="/assets/#top"></a>
+          <a class="smoothscroll" title="Back to Top" href="#top"></a>
         </div>
       </div>
     </div>
@@ -33,9 +33,9 @@
 
 <!-- Java Script
 ================================================== -->
-<script src="/assets/js/jquery-3.2.1.min.js"></script>
-<script src="/assets/js/plugins.js"></script>
-<script src="/assets/js/main.js"></script>
+<script src="/public/assets/js/jquery-3.2.1.min.js"></script>
+<script src="/public/assets/js/plugins.js"></script>
+<script src="/public/assets/js/main.js"></script>
 
 </body>
 
