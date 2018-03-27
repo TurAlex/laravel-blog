@@ -39,7 +39,7 @@ mix.scripts([
     'resources/assets/admin/vendors/bower_components/jquery/dist/jquery.min.js',
     'resources/assets/admin/vendors/bower_components/bootstrap/dist/js/bootstrap.min.js',
     'resources/assets/admin/vendors/bower_components/datatables/media/js/jquery.dataTables.min.js',
-    'resources/assets/admin/vendors/bower_components//jasny-bootstrap/dist/js/jasny-bootstrap.min.js',
+    'resources/assets/admin/vendors/bower_components/jasny-bootstrap/dist/js/jasny-bootstrap.min.js',
     'resources/assets/admin/dist/js/dataTables-data.js',
     'resources/assets/admin/vendors/bower_components/tinymce/tinymce.min.js',
     'resources/assets/admin/vendors/bower_components/select2/dist/js/select2.full.min.js',

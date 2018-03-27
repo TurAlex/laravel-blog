@@ -64,14 +64,14 @@ class Post extends Model {
 		if($image == null){return;}
 		$this->removeImage();
 		$imagename = str_random(10) . '.' . $image->extension();
-		$image->storeAs('public/uploads/', $imagename);
+		$image->storeAs('uploads/', $imagename);
 		$this->image = $imagename;
 		$this->save();
 	}
 	
 	public function removeImage() {
 		if ($this->image != null)
-			Storage::delete('public/uploads/'.$this->image);
+			Storage::delete('uploads/'.$this->image);
 	}
 	public function setCategory($id){
 		if($id == null)
@@ -103,8 +103,8 @@ class Post extends Model {
 	
 	public function getImage() {
 		if ($this->image == null)
-			return '/public/img/no-image.png';
-		return '/public/uploads/' . $this->image;
+			return '/img/no-image.png';
+		return '/uploads/' . $this->image;
 	}
 	
 	public function getCategoryTitle() {
